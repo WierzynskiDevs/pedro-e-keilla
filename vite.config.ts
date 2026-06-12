@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Force the Nitro build with the Vercel preset so self-deploys on Vercel
+  // get a proper SSR build (Build Output API) instead of a Vite-only static
+  // build, which 404s because there is no server to handle the routes.
+  nitro: { preset: "vercel" },
 });
